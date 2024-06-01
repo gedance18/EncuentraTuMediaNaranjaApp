@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.encuentratumedianaranja.signInFragment"
+        android:label="fragment_sign_in_fragment"
+        tools:layout="@layout/fragment_sign_in_fragmet">
+        <action
+            android:id="@+id/action_signInFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_list_chats_fragment"
+            app:destination="@id/list_chats_fragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_homeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_signOutFragment"
+            app:destination="@id/signOutFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signOutFragment"
+        android:name="com.example.encuentratumedianaranja.signOutFragment"
+        android:label="fragment_sign_out"
+        tools:layout="@layout/fragment_sign_out">
+        <action
+            android:id="@+id/action_signOutFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.encuentratumedianaranja.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+        <argument
+            android:name="userId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_profileFragment_to_list_chats_fragment"
+            app:destination="@id/list_chats_fragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.example.encuentratumedianaranja.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_HomeFragment_to_list_chats_fragment"
+            app:destination="@id/list_chats_fragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_signOutFragment"
+            app:destination="@id/signOutFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/list_chats_fragment"
+        android:name="com.example.encuentratumedianaranja.list_chats_fragment"
+        android:label="fragment_list_chats"
+        tools:layout="@layout/fragment_list_chats">
+        <action
+            android:id="@+id/action_list_chats_fragment_to_homeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_list_chats_fragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_list_chats_fragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.encuentratumedianaranja.ui.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_chat">
+        <action
+            android:id="@+id/action_chatFragment_to_list_chats_fragment"
+            app:destination="@id/list_chats_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/likesFragment"
+        android:name="com.example.encuentratumedianaranja.ui.LikesFragment"
+        android:label="fragment_likes"
+        tools:layout="@layout/fragment_likes">
+        <action
+            android:id="@+id/action_likesFragment_to_homeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_likesFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+</navigation>

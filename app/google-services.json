@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "296562752080",
+    "project_id": "appmedianaranja-f0503",
+    "storage_bucket": "appmedianaranja-f0503.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296562752080:android:b907cc3e9c23d247a66f55",
+        "android_client_info": {
+          "package_name": "com.example.encuentratumedianaranja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296562752080-6dagsenjdi4lq7vjmbter8cotovp0ab1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.encuentratumedianaranja",
+            "certificate_hash": "8a1e315b024fc3ea2db5d6eb8105c2607eda1741"
+          }
+        },
+        {
+          "client_id": "296562752080-fc5oeovugidop4ak931c8tvrun9s8svt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.encuentratumedianaranja",
+            "certificate_hash": "c393f556ca85709ed7c1ba1f615ae6df66586312"
+          }
+        },
+        {
+          "client_id": "296562752080-t9o7uv71kptpra0dr1fd3ueispq0qdes.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.encuentratumedianaranja",
+            "certificate_hash": "bb6e8f302f7b7cde712ec82590b40c363584bcc1"
+          }
+        },
+        {
+          "client_id": "296562752080-kuf2mlodqkv8thdnqs1l7esu976a7v46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1a2fK0d_rCs8qNc1ZdfpVnLwoLPgKQjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296562752080-kuf2mlodqkv8thdnqs1l7esu976a7v46.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
