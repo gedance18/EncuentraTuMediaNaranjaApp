@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.encuentratumedianaranja.utils.FirestoreUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -42,7 +43,7 @@ public class list_chats_fragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         profiles = new ArrayList<>();
-        adapter = new ProfileAdapter(profiles);
+        adapter = new ProfileAdapter(profiles, currentUserId);
         recyclerView.setAdapter(adapter);
 
         loadChats();
@@ -71,7 +72,7 @@ public class list_chats_fragment extends Fragment {
             if (task.isSuccessful()) {
                 String name = task.getResult().getString("name");
                 String photoUrl = task.getResult().getString("profileImageUrl");
-                String chatId = userId; // Asumimos que el userId es el chatId
+                String chatId = FirestoreUtils.getChatId(currentUserId, userId);
 
                 profiles.add(new Profile(photoUrl, name, chatId));
                 adapter.notifyDataSetChanged();
@@ -81,8 +82,6 @@ public class list_chats_fragment extends Fragment {
             }
         });
     }
-
-
 
     public static class Profile {
         private final String photoUrl;
@@ -108,19 +107,20 @@ public class list_chats_fragment extends Fragment {
         }
     }
 
-
     public static class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder> {
         private final List<Profile> profiles;
+        private final String currentUserId;
 
-        public ProfileAdapter(List<Profile> profiles) {
+        public ProfileAdapter(List<Profile> profiles, String currentUserId) {
             this.profiles = profiles;
+            this.currentUserId = currentUserId;
         }
 
         @NonNull
         @Override
         public ProfileViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_chats, parent, false);
-            return new ProfileViewHolder(view);
+            return new ProfileViewHolder(view, currentUserId);
         }
 
         @Override
@@ -138,9 +138,11 @@ public class list_chats_fragment extends Fragment {
             private final CircleImageView fotoPerfil;
             private final TextView nombre;
             private Profile profile;
+            private final String currentUserId;
 
-            public ProfileViewHolder(@NonNull View itemView) {
+            public ProfileViewHolder(@NonNull View itemView, String currentUserId) {
                 super(itemView);
+                this.currentUserId = currentUserId;
                 fotoPerfil = itemView.findViewById(R.id.foto_perfil);
                 nombre = itemView.findViewById(R.id.nombre);
                 itemView.setOnClickListener(this);
@@ -148,7 +150,6 @@ public class list_chats_fragment extends Fragment {
 
             public void bind(Profile profile) {
                 this.profile = profile;
-                // Cargar imagen usando Glide
                 Glide.with(itemView.getContext())
                         .load(profile.getPhotoUrl())
                         .placeholder(R.drawable.ic_profile_placeholder)
@@ -159,9 +160,8 @@ public class list_chats_fragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                // Implementar navegación a ChatFragment
                 Bundle bundle = new Bundle();
-                String chatId = profile.getChatId(); // Asegúrate de pasar el chatId correcto
+                String chatId = profile.getChatId(); // Obtén el chatId correctamente
                 Log.d("ProfileViewHolder", "Navigating to ChatFragment with chatId: " + chatId);
                 bundle.putString("CHAT_ID", chatId);
                 NavController navController = Navigation.findNavController(view);
@@ -170,7 +170,3 @@ public class list_chats_fragment extends Fragment {
         }
     }
 }
-
-
-
-

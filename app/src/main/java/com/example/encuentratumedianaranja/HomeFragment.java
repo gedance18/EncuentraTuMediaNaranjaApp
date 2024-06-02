@@ -273,10 +273,6 @@ public class HomeFragment extends Fragment {
         FirestoreUtils.createChat(user1Id, user2Id);
     }
 
-    private void createMessage(String chatId, String messageText, String senderId) {
-        FirestoreUtils.createMessage(chatId, messageText, senderId);
-    }
-
     private void showDialog(String title, String message) {
         new AlertDialog.Builder(getContext())
                 .setTitle(title)
